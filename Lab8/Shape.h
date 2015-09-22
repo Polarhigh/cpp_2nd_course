@@ -6,38 +6,38 @@
 template<class T>
 struct Coord
 {
-	T x;
-	T y;
+    T x;
+    T y;
 
-	Coord() { }
+    Coord() { }
 
-	Coord(T x, T y)
-	{
-		this->x = x;
-		this->y = y;
-	}
+    Coord(T x, T y)
+    {
+        this->x = x;
+        this->y = y;
+    }
 };
 
 class Shape
 {
 public:
-	Shape(int x, int y) : m_Center(x, y) { }
-	virtual ~Shape() { }
+    Shape(int x, int y) : m_Center(x, y) { }
+    virtual ~Shape() { }
 
-	bool IsMoreLeft(const Shape& shape) const
-	{
-		return m_Center.x < shape.m_Center.x;
-	}
+    bool IsMoreLeft(const Shape& shape) const
+    {
+        return m_Center.x < shape.m_Center.x;
+    }
 
-	bool IsUpper(const Shape& shape) const
-	{
-		return m_Center.y > shape.m_Center.y;
-	}
+    bool IsUpper(const Shape& shape) const
+    {
+        return m_Center.y > shape.m_Center.y;
+    }
 
-	virtual void Draw() const = 0;
+    virtual void Draw() const = 0;
 
 protected:
-	Coord<int> m_Center;
+    Coord<int> m_Center;
 };
 
 #endif // _SHAPE_H_

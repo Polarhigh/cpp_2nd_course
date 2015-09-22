@@ -4,16 +4,16 @@
 #include "Shape.h"
 
 class Triangle :
-	public Shape
+    public Shape
 {
 public:
-	Triangle(int x, int y) : Shape(x, y) { }
-	~Triangle() { }
+    Triangle(int x, int y) : Shape(x, y) { }
+    ~Triangle() { }
 
-	virtual void Draw() const override
-	{
-		std::cout << "Triangle(" << m_Center.x << ", " << m_Center.y << ")" << std::endl;
-	}
+    virtual void Draw() const override
+    {
+        std::cout << "Triangle(" << m_Center.x << ", " << m_Center.y << ")" << std::endl;
+    }
 };
 
 #endif // _TRIANGLE_H_

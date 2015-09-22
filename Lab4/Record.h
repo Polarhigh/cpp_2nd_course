@@ -6,50 +6,50 @@
 
 class Record
 {
-	std::wstring m_Name;
-	std::wstring m_Phone;
+    std::wstring m_Name;
+    std::wstring m_Phone;
 
 public:
-	Record(const wchar_t* name, const wchar_t* phone) : m_Name(name), m_Phone(phone) { }
-	Record(const std::wstring& name, const std::wstring& phone) : m_Name(name), m_Phone(phone) { }
-	Record(const Record& record) : m_Name(record.m_Name), m_Phone(record.m_Phone) { }
-	//~Record() { }
+    Record(const wchar_t* name, const wchar_t* phone) : m_Name(name), m_Phone(phone) { }
+    Record(const std::wstring& name, const std::wstring& phone) : m_Name(name), m_Phone(phone) { }
+    Record(const Record& record) : m_Name(record.m_Name), m_Phone(record.m_Phone) { }
+    //~Record() { }
 
-	Record& operator=(const Record& record)
-	{
-		m_Name = record.m_Name;
-		m_Phone = record.m_Phone;
+    Record& operator=(const Record& record)
+    {
+        m_Name = record.m_Name;
+        m_Phone = record.m_Phone;
 
-		return *this;
-	}
+        return *this;
+    }
 
-	const std::wstring& GetName() const
-	{
-		return m_Name;
-	}
+    const std::wstring& GetName() const
+    {
+        return m_Name;
+    }
 
-	void SetName(const std::wstring& name)
-	{
-		m_Name = name;
-	}
+    void SetName(const std::wstring& name)
+    {
+        m_Name = name;
+    }
 
-	const std::wstring& GetPhone() const
-	{
-		return m_Phone;
-	}
+    const std::wstring& GetPhone() const
+    {
+        return m_Phone;
+    }
 
-	void SetPhone(const std::wstring& phone)
-	{
-		m_Phone = phone;
-	}
+    void SetPhone(const std::wstring& phone)
+    {
+        m_Phone = phone;
+    }
 
-	friend std::wostream& operator<<(std::wostream& os, const Record& rec);
+    friend std::wostream& operator<<(std::wostream& os, const Record& rec);
 };
 
 std::wostream& operator<<(std::wostream& os, const Record& rec)
 {
-	os << L"Name: " << rec.m_Name << L"\tPhone: " << rec.m_Phone;
-	return os;
+    os << L"Name: " << rec.m_Name << L"\tPhone: " << rec.m_Phone;
+    return os;
 }
 
 #endif //_RECORD_H_

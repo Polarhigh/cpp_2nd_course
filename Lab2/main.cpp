@@ -139,17 +139,14 @@ int main()
     FileToString(L"main.cpp", text);
 
     wcout << L"[Исходный текст]" << endl;
-    wcout << text << endl << endl << endl;
+    wcout << text << endl;
 
     LexParse(text, lexRules, tokens); // в Debug сборке время парсинга > 1с
     ApplyRules(tokens);
-    TokensToString(tokens, text);
 
-    wcout << L"[Преобразованный текст]" << endl;
-    vector<wstring> stext;
-    transform(tokens.begin(), tokens.end(), back_inserter(stext), NewlineFunct());
+    wcout << endl << endl << L"[Преобразованный текст]" << endl;
+    transform(tokens.begin(), tokens.end(), ostream_iterator<wstring, wchar_t>(wcout, L""), NewlineFunct());
 
-    copy(stext.begin(), stext.end(), ostream_iterator<wstring, wchar_t>(wcout, L""));
     wcout << endl;
 
     return 0;

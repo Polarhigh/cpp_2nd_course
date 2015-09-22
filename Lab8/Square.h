@@ -4,16 +4,16 @@
 #include "Shape.h"
 
 class Square :
-	public Shape
+    public Shape
 {
 public:
-	Square(int x, int y) : Shape(x, y) { }
-	~Square() { }
+    Square(int x, int y) : Shape(x, y) { }
+    ~Square() { }
 
-	virtual void Draw() const override
-	{
-		std::cout << "Square(" << m_Center.x << ", " << m_Center.y << ")" << std::endl;
-	}
+    virtual void Draw() const override
+    {
+        std::cout << "Square(" << m_Center.x << ", " << m_Center.y << ")" << std::endl;
+    }
 };
 
 
