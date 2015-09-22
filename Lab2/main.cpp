@@ -131,9 +131,9 @@ int main()
     {
         { Lexeme::WORD,         wregex(L"[a-zA-Zа-яА-Я]+") },
         { Lexeme::PUNCT_MARK,	wregex(L"[\\.,!\\?:;]") },
-        { Lexeme::SPACE,		wregex(L" ") },
+        { Lexeme::SPACE,        wregex(L" ") },
         { Lexeme::TABULATION,	wregex(L"\\t") },
-        { Lexeme::NEWLINE,		wregex(L"\\n") },
+        { Lexeme::NEWLINE,      wregex(L"\\n") },
     };
 
     FileToString(L"main.cpp", text);
