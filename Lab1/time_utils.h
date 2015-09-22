@@ -1,11 +1,11 @@
-#ifndef _TIME_UTILS_H_
+п»ї#ifndef _TIME_UTILS_H_
 #define _TIME_UTILS_H_
 
 #include <iostream>
 #include <functional>
 #include <chrono>
 
-// замеряет время исполнения ф-ии execFunc
+// Р·Р°РјРµСЂСЏРµС‚ РІСЂРµРјСЏ РёСЃРїРѕР»РЅРµРЅРёСЏ С„-РёРё execFunc
 void GetExecutionTime(const std::function<void()>& execFunc, long long& outMs, long long& outNs)
 {
 	using namespace std::chrono;
@@ -18,7 +18,7 @@ void GetExecutionTime(const std::function<void()>& execFunc, long long& outMs, l
 	outNs = duration_cast<nanoseconds>(endTime).count();
 }
 
-// форматированный вывод времени исполнения
+// С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРЅС‹Р№ РІС‹РІРѕРґ РІСЂРµРјРµРЅРё РёСЃРїРѕР»РЅРµРЅРёСЏ
 void PrintExecutionTime(const std::string& frontText, long long ms, long long ns)
 {
 	std::cout << frontText.c_str();

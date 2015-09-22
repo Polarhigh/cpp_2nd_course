@@ -1,11 +1,11 @@
-#ifndef _BUBBLE_SORT_H_
+п»ї#ifndef _BUBBLE_SORT_H_
 #define _BUBBLE_SORT_H_
 
 #include <vector>
 #include <random>
 #include <chrono>
 
-// сортировка пузырьком с использованием оператора []
+// СЃРѕСЂС‚РёСЂРѕРІРєР° РїСѓР·С‹СЂСЊРєРѕРј СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РѕРїРµСЂР°С‚РѕСЂР° []
 template<typename T>
 void VectorBubbleSort(std::vector<T>& vec)
 {
@@ -25,7 +25,7 @@ void VectorBubbleSort(std::vector<T>& vec)
 	}
 }
 
-// сортировка пузырьком с использованием at
+// СЃРѕСЂС‚РёСЂРѕРІРєР° РїСѓР·С‹СЂСЊРєРѕРј СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј at
 template<typename T>
 void VectorBubbleSort2(std::vector<T>& vec)
 {
@@ -45,7 +45,7 @@ void VectorBubbleSort2(std::vector<T>& vec)
 	}
 }
 
-// сортировка пузырьком с использованием только итераторов
+// СЃРѕСЂС‚РёСЂРѕРІРєР° РїСѓР·С‹СЂСЊРєРѕРј СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј С‚РѕР»СЊРєРѕ РёС‚РµСЂР°С‚РѕСЂРѕРІ
 template<typename T>
 void VectorBubbleSort3(std::vector<T>& vec)
 {

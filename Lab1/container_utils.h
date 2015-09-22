@@ -1,4 +1,4 @@
-#ifndef _CONTAINER_UTILS_H_
+п»ї#ifndef _CONTAINER_UTILS_H_
 #define _CONTAINER_UTILS_H_
 
 #include <type_traits>
@@ -6,7 +6,7 @@
 #include <random>
 #include <chrono>
 
-// заполняет контейнер случайными значениями, тип контейнера должен являться целым или с плавающей точкой
+// Р·Р°РїРѕР»РЅСЏРµС‚ РєРѕРЅС‚РµР№РЅРµСЂ СЃР»СѓС‡Р°Р№РЅС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё, С‚РёРї РєРѕРЅС‚РµР№РЅРµСЂР° РґРѕР»Р¶РµРЅ СЏРІР»СЏС‚СЊСЃСЏ С†РµР»С‹Рј РёР»Рё СЃ РїР»Р°РІР°СЋС‰РµР№ С‚РѕС‡РєРѕР№
 template<template<class T, class All = std::allocator<T>> class TContainer, class TValues>
 void FillContainer(TContainer<TValues>& vec, size_t num, TValues min, TValues max)
 {
@@ -23,7 +23,7 @@ void FillContainer(TContainer<TValues>& vec, size_t num, TValues min, TValues ma
 	generate(vec.begin(), vec.end(), [&]() { return distr(gen); });
 }
 
-// вывод контейнера
+// РІС‹РІРѕРґ РєРѕРЅС‚РµР№РЅРµСЂР°
 template<template<class T, class All = std::allocator<T>> class TContainer, class TValues>
 void PrintContainer(const TContainer<TValues>& cont, const char* delimiter = "\r\n")
 {

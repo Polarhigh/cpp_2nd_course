@@ -1,4 +1,4 @@
-#ifndef _QUEUEWITHPRIORITY_H_
+п»ї#ifndef _QUEUEWITHPRIORITY_H_
 #define _QUEUEWITHPRIORITY_H_
 
 #include <iostream>
@@ -7,7 +7,7 @@
 #include <algorithm>
 #include <iterator>
 
-// требования к TPriority: class enum от 0 до _count с шагом 1; так же необходима перегрузка <<
+// С‚СЂРµР±РѕРІР°РЅРёСЏ Рє TPriority: class enum РѕС‚ 0 РґРѕ _count СЃ С€Р°РіРѕРј 1; С‚Р°Рє Р¶Рµ РЅРµРѕР±С…РѕРґРёРјР° РїРµСЂРµРіСЂСѓР·РєР° <<
 template<class TElement, class TPriority>
 class QueueWithPriority
 {
@@ -48,7 +48,7 @@ public:
 			}
 		}
 
-		throw std::exception("Очередь пуста");
+		throw std::exception("РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°");
 	}
 
 	void Accelerate(TPriority from, TPriority to)
@@ -60,7 +60,7 @@ public:
 		queueFrom->clear();
 	}
 
-	// элементам с самым низким приоритетом назначается наивысшиый
+	// СЌР»РµРјРµРЅС‚Р°Рј СЃ СЃР°РјС‹Рј РЅРёР·РєРёРј РїСЂРёРѕСЂРёС‚РµС‚РѕРј РЅР°Р·РЅР°С‡Р°РµС‚СЃСЏ РЅР°РёРІС‹СЃС€РёС‹Р№
 	void Accelerate()
 	{
 		Accelerate(static_cast<TPriority>(PrioritiesCount() - 1), static_cast<TPriority>(0));
@@ -86,10 +86,10 @@ public:
 	}
 
 private:
-	// Возвращает указатель на очередь связанную с приоритетом priority
+	// Р’РѕР·РІСЂР°С‰Р°РµС‚ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕС‡РµСЂРµРґСЊ СЃРІСЏР·Р°РЅРЅСѓСЋ СЃ РїСЂРёРѕСЂРёС‚РµС‚РѕРј priority
 	inline TIQueue* GetQueueP(TPriority priority) { return *(m_Queues.begin() + static_cast<int>(priority)); }
 
-	// Количество приоритетов в TPriority
+	// РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРёРѕСЂРёС‚РµС‚РѕРІ РІ TPriority
 	inline int PrioritiesCount() { return static_cast<int>(TPriority::_count); }
 };
 

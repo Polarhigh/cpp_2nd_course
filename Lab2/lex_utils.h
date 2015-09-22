@@ -1,4 +1,4 @@
-#ifndef _LEX_UTILS_H_
+﻿#ifndef _LEX_UTILS_H_
 #define _LEX_UTILS_H_
 
 #include <regex>
