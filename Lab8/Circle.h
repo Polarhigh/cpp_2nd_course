@@ -1,4 +1,4 @@
-#ifndef _CIRCLE_H_
+﻿#ifndef _CIRCLE_H_
 #define _CIRCLE_H_
 
 #include "Shape.h"

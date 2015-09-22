@@ -1,4 +1,4 @@
-#ifndef _RECORD_H_
+﻿#ifndef _RECORD_H_
 #define _RECORD_H_
 
 #include <iostream>
