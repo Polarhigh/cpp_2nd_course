@@ -129,7 +129,7 @@ int main()
     vector<token_t<Lexeme>> tokens;
     map<Lexeme, wregex> lexRules =
     {
-        { Lexeme::WORD,			wregex(L"[a-zA-Zа-яА-Я]+") },
+        { Lexeme::WORD,         wregex(L"[a-zA-Zа-яА-Я]+") },
         { Lexeme::PUNCT_MARK,	wregex(L"[\\.,!\\?:;]") },
         { Lexeme::SPACE,		wregex(L" ") },
         { Lexeme::TABULATION,	wregex(L"\\t") },
@@ -148,7 +148,7 @@ int main()
     wcout << L"[Преобразованный текст]" << endl;
     vector<wstring> stext;
     transform(tokens.begin(), tokens.end(), back_inserter(stext), NewlineFunct());
-    
+
     copy(stext.begin(), stext.end(), ostream_iterator<wstring, wchar_t>(wcout, L""));
     wcout << endl;
 

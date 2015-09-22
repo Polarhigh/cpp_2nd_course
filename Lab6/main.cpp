@@ -1,4 +1,4 @@
-﻿/* Автор: 
+﻿/* Автор:
 Дата: 2015
 
 1. Написать программу, которая выполняет следующие действия:
@@ -31,16 +31,16 @@ using namespace std;
 
 struct Point
 {
-	int x;
-	int y;
+    int x;
+    int y;
 
-	Point() {}
+    Point() {}
 
-	Point(int x, int y)
-	{
-		this->x = x;
-		this->y = y;
-	}
+    Point(int x, int y)
+    {
+        this->x = x;
+        this->y = y;
+    }
 };
 
 ostream& operator<<(ostream& os, const Point& point)
@@ -51,17 +51,17 @@ ostream& operator<<(ostream& os, const Point& point)
 
 struct Shape
 {
-	vector<Point> vertexes;
-	bool squareFlag; // true если у фигуры все углы прямые
+    vector<Point> vertexes;
+    bool squareFlag; // true если у фигуры все углы прямые
 
-	Shape() {}
+    Shape() {}
 
-	Shape(vector<Point>& vertexes, bool square = false) : vertexes(vertexes), squareFlag(square) { }
+    Shape(vector<Point>& vertexes, bool square = false) : vertexes(vertexes), squareFlag(square) { }
 
-	inline int GetVertexNum() const
-	{
-		return static_cast<int>(vertexes.size());
-	}
+    inline int GetVertexNum() const
+    {
+        return static_cast<int>(vertexes.size());
+    }
 };
 
 ostream& operator<<(ostream& os, const Shape& shape)
@@ -73,55 +73,55 @@ ostream& operator<<(ostream& os, const Shape& shape)
 
 struct IsSquareFunct : public unary_function<Shape, bool>
 {
-	bool operator()(const Shape& shape) const
-	{
-		if (shape.squareFlag)
-		{
-			if (abs(shape.vertexes[0].x - shape.vertexes[3].x) == abs(shape.vertexes[0].y - shape.vertexes[1].y))
-				return true;
-		}
+    bool operator()(const Shape& shape) const
+    {
+        if (shape.squareFlag)
+        {
+            if (abs(shape.vertexes[0].x - shape.vertexes[3].x) == abs(shape.vertexes[0].y - shape.vertexes[1].y))
+                return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 };
 
 struct IsRectFunct : public unary_function<Shape, bool>
 {
-	bool operator()(const Shape& shape) const
-	{
-		return shape.squareFlag;
-	}
+    bool operator()(const Shape& shape) const
+    {
+        return shape.squareFlag;
+    }
 };
 
 struct IsTriFunct : public unary_function<Shape, bool>
 {
-	bool operator()(const Shape& shape) const
-	{
-		return shape.GetVertexNum() == 3;
-	}
+    bool operator()(const Shape& shape) const
+    {
+        return shape.GetVertexNum() == 3;
+    }
 };
 
 
 void ReadFile(const char* file, string& outString)
 {
-	fstream in(file, fstream::in);
+    fstream in(file, fstream::in);
 
-	if (in)
-	{
-		ostringstream content;
-		content << in.rdbuf();
-		in.close();
+    if (in)
+    {
+        ostringstream content;
+        content << in.rdbuf();
+        in.close();
 
-		outString = content.str();
-	}
+        outString = content.str();
+    }
 }
 
 void Task2()
 {
-	vector<Shape> shapes;
-	// a) TODO заполнение вектора рандомом, UPD1: можно и без рандома обойтись
-	shapes.emplace_back(vector<Point>({ Point(0, 0), Point(0, 4), Point(6, 4), Point(6, 0) }), true);
-	shapes.emplace_back(vector<Point>({ Point(0, 0), Point(0, 4), Point(4, 6), Point(0, 6), Point(12, -12) }));
+    vector<Shape> shapes;
+    // a) TODO заполнение вектора рандомом, UPD1: можно и без рандома обойтись
+    shapes.emplace_back(vector<Point>({ Point(0, 0), Point(0, 4), Point(6, 4), Point(6, 0) }), true);
+    shapes.emplace_back(vector<Point>({ Point(0, 0), Point(0, 4), Point(4, 6), Point(0, 6), Point(12, -12) }));
     shapes.emplace_back(vector<Point>({ Point(1, -40), Point(3, 4), Point(4, 0) }));
     shapes.emplace_back(vector<Point>({ Point(0, 0), Point(0, 5), Point(5, 5), Point(5, 0) }), true); // квадрат
     shapes.emplace_back(vector<Point>({ Point(-42, 10), Point(3, 4), Point(43, 20) }));
@@ -129,32 +129,32 @@ void Task2()
 
     PrintContainer(shapes);
 
-	// b) общее кол-во вершин
-	int totalVertexes = accumulate(shapes.begin(), shapes.end(), 0, [](int sumFar, const Shape& shape) { return sumFar + shape.GetVertexNum(); });
-   
+    // b) общее кол-во вершин
+    int totalVertexes = accumulate(shapes.begin(), shapes.end(), 0, [](int sumFar, const Shape& shape) { return sumFar + shape.GetVertexNum(); });
+
     cout << endl << "total vertexes: " << totalVertexes << endl;
 
-	// c) кол-во треугольников, квадратов и прямоугольников
-	int squaresNum = count_if(shapes.begin(), shapes.end(), IsSquareFunct());
-	int trianglesNum = count_if(shapes.begin(), shapes.end(), IsTriFunct());
-	int rectanglesNum = count_if(shapes.begin(), shapes.end(), IsRectFunct());
+    // c) кол-во треугольников, квадратов и прямоугольников
+    int squaresNum = count_if(shapes.begin(), shapes.end(), IsSquareFunct());
+    int trianglesNum = count_if(shapes.begin(), shapes.end(), IsTriFunct());
+    int rectanglesNum = count_if(shapes.begin(), shapes.end(), IsRectFunct());
 
-    cout <<  "triangles: " << trianglesNum << endl << "squares: " << squaresNum << endl << "rectangles: " << rectanglesNum << endl;
+    cout << "triangles: " << trianglesNum << endl << "squares: " << squaresNum << endl << "rectangles: " << rectanglesNum << endl;
 
-	// d) удаление всех пятиугольников
-	shapes.erase(remove_if(shapes.begin(), shapes.end(), [](const Shape& shape) { return shape.GetVertexNum() == 5; }), shapes.end());
-    
+    // d) удаление всех пятиугольников
+    shapes.erase(remove_if(shapes.begin(), shapes.end(), [](const Shape& shape) { return shape.GetVertexNum() == 5; }), shapes.end());
+
     cout << endl << "[Removing pentagons...]" << endl;
     PrintContainer(shapes);
 
-	// e) вектор в котором по вершине из каждой фигуры из shapes
-	vector<Point> points(shapes.size());
-	transform(shapes.begin(), shapes.end(), points.begin(), [](const Shape& shape) { return shape.vertexes[rand() % shape.GetVertexNum()]; });
-        
+    // e) вектор в котором по вершине из каждой фигуры из shapes
+    vector<Point> points(shapes.size());
+    transform(shapes.begin(), shapes.end(), points.begin(), [](const Shape& shape) { return shape.vertexes[rand() % shape.GetVertexNum()]; });
+
     cout << endl << "[Points vector]" << endl;
     PrintContainer(points);
 
-	// f) сортировка: треугольники, квадраты, прямоугольники
+    // f) сортировка: треугольники, квадраты, прямоугольники
     auto secondGroup = partition(shapes.begin(), shapes.end(), IsTriFunct());
     secondGroup = partition(secondGroup, shapes.end(), IsSquareFunct());
     partition(secondGroup, shapes.end(), IsRectFunct());
@@ -165,30 +165,30 @@ void Task2()
 
 void Task1()
 {
-	// a) чтение файла
-	string file;
-	ReadFile("text.txt", file);
+    // a) чтение файла
+    string file;
+    ReadFile("text.txt", file);
 
-	// b) выделение слов
-	istringstream iss(file);
-	vector<string> words;
-	copy(istream_iterator<string>(iss), istream_iterator<string>(), back_inserter(words));
+    // b) выделение слов
+    istringstream iss(file);
+    vector<string> words;
+    copy(istream_iterator<string>(iss), istream_iterator<string>(), back_inserter(words));
 
-	// c) удаление повторений
-	sort(words.begin(), words.end());
-	words.erase(unique(words.begin(), words.end()), words.end());
+    // c) удаление повторений
+    sort(words.begin(), words.end());
+    words.erase(unique(words.begin(), words.end()), words.end());
 
-	// вывод
-	copy(words.begin(), words.end(), ostream_iterator<string>(cout, "\n"));
+    // вывод
+    copy(words.begin(), words.end(), ostream_iterator<string>(cout, "\n"));
 }
 
 int main()
 {
     cout << "[Task 1]" << endl;
-	Task1();
-	
+    Task1();
+
     cout << endl << "[Task 2]" << endl;
     Task2();
 
-	return 0;
+    return 0;
 }
